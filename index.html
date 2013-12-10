@@ -12,6 +12,8 @@
     //
     function captureSuccess(mediaFiles) {
         var i, len;
+        alert('SUCCESS');
+        jQuery('#first').text('JA HET WERKT!');
         for (i = 0, len = mediaFiles.length; i < len; i += 1) {
             /*uploadFile(mediaFiles[i]);*/
             jQuery('#capturebox').append('<li>'+i.name+'</li>');
@@ -56,7 +58,7 @@
     <body>
         <button onclick="captureAudio();">Capture Audio</button> <br>
         <ul id="capturebox">
-            <li>
+            <li id="first">
                 Hier komen de gegevens
             </li>
         </ul>
