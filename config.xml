@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" ?>
     <widget xmlns = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "com.runtastic.bas"
+        id        = "com.heartbeat.app"
         versionCode="10" 
-        version   = "1.0.0">
+        version   = "1.0.1">
 
     <!-- versionCode is optional and Android only -->
 
-    <name>PhoneGap Example</name>
+    <name>Heart-Beat APP</name>
 
     <description>
-        An example for phonegap build docs. 
+        Dit is een test APP voor de runtastic module op de mobiel.
     </description>
 
     <author href="http://appplus.nl" email="basvanbeers@hotmail.com">
