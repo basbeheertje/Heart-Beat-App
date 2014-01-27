@@ -1,0 +1,10 @@
+TIMESTAMP:2014-01-10 14:46:19
+Gebruiker:HB
+Hartslag:72
+
+---------------------------------
+Datum:2014-01-14
+Tijd:11:46:39
+Hartslag:85
+User:16
+Device:1
