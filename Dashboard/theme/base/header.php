@@ -421,13 +421,13 @@
 						</a>
 						<ul class="dropdown-menu">
 							<li>
-								<a href="/user/settings"><i class="fa fa-user"></i> Mijn Profiel</a>
+								<a href="/settings"><i class="fa fa-user"></i> Mijn Profiel</a>
 							</li>
 							<li>
 								<a href="javascript:;" id="trigger_fullscreen"><i class="fa fa-move"></i> Volledig scherm</a>
 							</li>
 							<li>
-								<a href="/user/logout"><i class="fa fa-key"></i> Uitloggen</a>
+								<a href="/logout"><i class="fa fa-key"></i> Uitloggen</a>
 							</li>
 						</ul>
 					</li>

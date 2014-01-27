@@ -27,10 +27,6 @@
 				
 				$this->checkToken($_SESSION['authToken']);
 				
-			}else{
-				
-				echo 'No login action';
-				
 			}
 			
 		}
