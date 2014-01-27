@@ -3,7 +3,7 @@
 				<div class="col-md-12">
 					<!-- BEGIN PAGE TITLE & BREADCRUMB-->
 					<h3 class="page-title">
-						Alerts<small>overzicht van alle alerts en waardes</small>
+						Shares<small>overzicht van alle gedeelde apparaten</small>
 					</h3>
 					<ul class="page-breadcrumb breadcrumb">
 						<li class="btn-group">
@@ -15,10 +15,10 @@
 							</button>
 							<ul class="dropdown-menu pull-right" role="menu">
 								<li>
-									<a href="/settings/alertAdd">Toevoegen</a>
+									<a href="/settings/sharesAdd">Toevoegen</a>
 								</li>
 								<li>
-									<a href="#" onclick="document.getElementById('alertRemove').submit();">Verwijderen</a>
+									<a href="#" onclick="document.getElementById('sharesRemove').submit();">Verwijderen</a>
 								</li>
 							</ul>
 						</li>
@@ -32,7 +32,7 @@
 							<i class="fa fa-angle-right"></i>
 						</li>
 						<li>
-							Alerts
+							Shares
 						</li>
 					</ul>
 					<!-- END PAGE TITLE & BREADCRUMB-->
@@ -51,8 +51,8 @@
 						</div>
 						<div class="portlet-body">
 							<div class="table-toolbar"></div>
-                                                        <form action="/settings/alertRemove" class="form-horizontal" method="POST" id="alertRemove">
-                                                        <input type="hidden" name="formkey" value="alertRemove">
+                                                        <form action="/settings/sharesRemove" class="form-horizontal" method="POST" id="sharesRemove">
+                                                        <input type="hidden" name="formkey" value="sharesRemove">
 							<table class="managedTables table table-striped table-bordered table-hover" id="sample_1">
 							<thead>
 							<tr>
@@ -63,41 +63,36 @@
 									Apparaat Type
 								</th>
 								<th>
-									Aantal ontvangers
-								</th>
-								<th>
-									Type melding
+									Gedeeld met
 								</th>
 							</tr>
 							</thead>
 							<tbody>
 							<?php
 							
-								foreach($this->system->user->devices as $device){
-									
-									$alerts = $device->getalerts();
-									
-									if(isset($alerts) and !empty($alerts)){
-									
-										foreach($alerts as $alert){
+                                                                $shares = new share($this->system);
+                                                                $shares = $shares->findByUser($this->system->user->id);
+                                                        
+                                                                if(isset($shares) and !empty($shares)){
+                                                                
+                                                                    foreach($shares as $share){
+                                                                        
+                                                                        $device = $share->getDevice();
+                                                                        $sharer = $share->getUser();
 										
 							?><tr>
-								<td><input name="id[]" type="checkbox" class="checkboxes" value="<?php echo $alert->id; ?>"/></td>
+								<td><input name="id[]" type="checkbox" class="checkboxes" value="<?php echo $share->id; ?>"/></td>
 								<td><?php echo $device->type->title; ?></td>
-								<td><?php echo count($alert->getAlertreceivers()); ?></td>
-								<td><?php echo $alert->type->title; ?></td>
+								<td><?php echo $sharer->email; ?></td>
 							</tr><?php
-										
-										}
-									
-									}
 								
-								}
+                                                                    }
+                                                                
+                                                                }
 							
 							?>
 							</tbody>
-							</table>
-                                                        </form>
+							</table></form>
 						</div>
 					</div>
 					<!-- END EXAMPLE TABLE PORTLET-->

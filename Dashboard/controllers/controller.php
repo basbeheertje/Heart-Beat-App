@@ -2,7 +2,7 @@
 
 	class controller{
 	
-		private $system;
+		public $system;
 		private $class_name;
 	
 		public function __CONSTRUCT($system){

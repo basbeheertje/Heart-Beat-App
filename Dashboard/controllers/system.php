@@ -4,7 +4,7 @@
 	
 		public $controller;
 		public $theme = 'base';
-		public $models = array('model','device','deviceTypes','deviceData','alert','alertTypes','alertReceivers','user','userAttributes');
+		public $models = array('model','share','device','deviceTypes','deviceData','alert','alertTypes','alertReceivers','user','userAttributes');
 		public $needs = array('controller','login','dashboard','settings','logout');
 		public $db_database = 'schoolminor';
 		public $db_username = 'schoolminor';
@@ -12,9 +12,11 @@
 		public $db_host = 'localhost';
 		public $user;
 		public $currentpage = 'dashboard';
+                public $request;
 		
 		public function __CONSTRUCT(){
 		
+                        $this->createRequest();
 			$this->loadAllModels();
 			$this->loadAllNeeds();
 			$this->extractController();
@@ -28,6 +30,29 @@
 			}
 		
 		}
+                
+                public function createRequest(){
+                    
+                    if(isset($_POST) and !empty($_POST)){
+                        
+                        foreach($_POST as $key => $value){
+                            
+                            $this->request->data[$key] = $value;
+                            
+                        }
+                        
+                    }
+                    if(isset($_GET) and !empty($_GET)){
+                        
+                        foreach($_GET as $key => $value){
+                            
+                            $this->request->data[$key] = $value;
+                            
+                        }
+                        
+                    }
+                    
+                }
 		
 		public function checkUser(){
 		
@@ -83,8 +108,9 @@
 	
 		public function selectMenu(){
 		
-			$alerts = array('/settings/alertEdit/','/settings/alertRemove/','/settings/alertAdd/','/settings/alerts');
+			$alerts = array('/settings/alertEdit','/settings/alertRemove','/settings/alertAdd','/settings/alerts');
 			$settings = array('/settings/','/settings/edit/','/settings/addAvatar/','/settings/');
+                        $shares = array('/settings/sharesEdit','/settings/sharesRemove','/settings/sharesAdd','/settings/shares');
 		
 			if(in_array($_SERVER['REQUEST_URI'],$alerts)){
 				
@@ -93,6 +119,10 @@
 			}else if(in_array($_SERVER['REQUEST_URI'],$settings)){
 			
 				$this->currentpage = 'settings';
+			
+			}else if(in_array($_SERVER['REQUEST_URI'],$shares)){
+			
+				$this->currentpage = 'shares';
 			
 			}
 		

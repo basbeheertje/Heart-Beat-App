@@ -9,8 +9,7 @@
 							</div>
 							<!-- BEGIN SIDEBAR TOGGLER BUTTON -->
 						</li>
-						<li class="sidebar-search-wrapper">
-							<!-- BEGIN RESPONSIVE QUICK SEARCH FORM -->
+						<!--<li class="sidebar-search-wrapper">
 							<form class="sidebar-search" action="/search" method="POST">
 								<div class="form-container">
 									<div class="input-box">
@@ -20,8 +19,7 @@
 									</div>
 								</div>
 							</form>
-							<!-- END RESPONSIVE QUICK SEARCH FORM -->
-						</li>
+						</li>-->
 						<li class="<?php if($this->system->currentpage == 'dashboard'){ ?>start active <?php } ?>">
 							<a href="/">
 								<i class="fa fa-home"></i>
@@ -50,7 +48,7 @@
 							</a>
 						</li>
 						<li class="<?php if($this->system->currentpage == 'shares'){ ?>start active <?php } ?>">
-							<a href="/settings/shares" target="_blank">
+							<a href="/settings/shares">
 								<i class="fa fa-user"></i>
 								<span class="title">
 									Shares
