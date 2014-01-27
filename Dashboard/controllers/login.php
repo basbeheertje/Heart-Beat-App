@@ -15,7 +15,11 @@
 		
 		public function checkLoginAction(){
 			
-			if(isset($_GET) and !empty($_GET) and isset($_GET['user'])){
+                        if(isset($this->system->request) and isset($this->system->request->data['formkey']) and $this->system->request->data['formkey'] == 'logon'){
+                            
+                            $this->checkUser($this->system->request->data['user'], $this->system->request->data['password']);
+                            
+                        }/*else if(isset($_GET) and !empty($_GET) and isset($_GET['user'])){
 				
 				$this->checkUser($_GET['user'], $_GET['password']);
 				
@@ -23,7 +27,7 @@
 				
 				$this->checkUser($_POST['user'], $_POST['password']);
 				
-			}else if(isset($_SESSION) and isset($_SESSION['authToken']) and !empty($_SESSION['authToken'])){
+			}*/else if(isset($_SESSION) and isset($_SESSION['authToken']) and !empty($_SESSION['authToken'])){
 				
 				$this->checkToken($_SESSION['authToken']);
 				
@@ -54,6 +58,12 @@
 						$user = new user($this->system);
 						$user->load($row['id']);
 					}
+                                        
+                                        if(isset($this->system->request->data['remember'])){
+                                            
+                                            setcookie("remember", md5($user->id));
+                                            
+                                        }
 					
 					$_SESSION['authToken'] = $user->authToken;
 					
@@ -118,6 +128,8 @@
 		
 		public function renderView(){
 			
+                        $this->checkRemember();
+                    
 			require_once('views'.DIRECTORY_SEPARATOR.'login'.DIRECTORY_SEPARATOR.'default.php');
 			
 		}
@@ -128,6 +140,20 @@
 		
 		}
 		
+                public function checkRemember(){
+                    
+                    if(isset($_COOKIE['remember'])){
+                        
+                        $user = new user($this->system);
+                        $respons = $user->getUserRembered($_COOKIE['remember']);
+                        $this->system->request['loginremembered']['user'] = $respons["email"];
+                        $this->system->request['loginremembered']['password'] = $respons["password"];
+                        $this->system->request['loginremembered']['remember'] = true;
+                        
+                    }
+                    
+                }
+                
 	}
 	
 ?>

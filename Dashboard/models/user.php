@@ -23,10 +23,7 @@
 			parent::load($id);
 			$this->attributes = $this->getAttributes();
 			$this->devices = $this->getDevices();
-			
-			/*print '<pre>';
-			var_dump($this);
-			print '</pre>';*/
+                        $this->shares = $this->getShares();
 		
 		}
 		
@@ -63,7 +60,40 @@
 			return($attributenLijst);
 		
 		}
+                
+                public function getShares(){
+		
+			$query = 'SELECT `id` FROM `share` WHERE user = '.$this->id.'';
+			$uitkomst = $this->select($query);
+			
+			$attributenLijst = array();
+			
+			foreach($uitkomst as $attribute){
+				$attrTMP = new share($this->system);
+				$attrTMP->load($attribute['id']);
+				$attributenLijst[] = $attrTMP;
+			}
+		
+			return($attributenLijst);
+		
+		}
 	
+                public function getUserRembered($md5string){
+                    
+                        $query = 'SELECT * FROM `user` WHERE md5(id) = "'.$md5string.'" LIMIT 0,1';
+			$uitkomst = $this->select($query);
+			
+                        if(isset($uitkomst) and !empty($uitkomst)){
+                            foreach($uitkomst as $attribute){
+                                    $attributenLijst = $attribute;
+                            }
+                            return($attributenLijst);
+                        }
+		
+			return(false);
+                    
+                }
+                
 	}
 	
 ?>

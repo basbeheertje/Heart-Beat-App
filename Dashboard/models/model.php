@@ -34,11 +34,12 @@
 			
 		}
 		
-		/*public function save(){
+		public function add(){
 			
 			$columns = $this->getColumns();
+                        unset($columns[0]);
 			
-			$query = "INSERT INTO `".$this->table."` (".'"'.implode('","',$columns).'"'.") VALUES(";
+			$query = "INSERT INTO `".$this->table."` (".implode(',',$columns).") VALUES(";
 			
 			$counter = 0;
 			
@@ -56,11 +57,11 @@
 			
 			}
 			
-			$query .= ") WHERE id = ".$this->id."";
+			$query .= ")";
 			
 			$this->insert($query);
 			
-		}*/
+		}
 		
 		public function save(){
 			
@@ -85,8 +86,6 @@
 			}
 			
 			$query .= " WHERE id = ".$this->id."";
-			
-			var_dump($query);
 			
 			$this->update($query);
 			
@@ -160,7 +159,34 @@
 			mysqli_close($con);
 		
 		}
+                
+                public function delete(){
+		
+                        $query = 'DELETE FROM `'.$this->table.'` WHERE id = '.$this->id;
+                    
+			$con=mysqli_connect($this->system->db_host,$this->system->db_username,$this->system->db_password,$this->system->db_database);
+			// Check connection
+			if (mysqli_connect_errno()){
+				echo "Failed to connect to MySQL: " . mysqli_connect_error();
+			}
+
+			mysqli_query($con,$query);
+
+			mysqli_close($con);
+		
+		}
 	
+                public function findAll(){
+                    
+                    $list = array();
+                    
+                    $query = "SELECT * FROM `".$this->table."`";
+                    $result = $this->select($query);
+                    
+                    return($result);
+                    
+                }
+                
 	}
 	
 ?>

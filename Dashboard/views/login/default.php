@@ -7,7 +7,7 @@
 	<!-- BEGIN HEAD -->
 	<head>
 		<meta charset="utf-8"/>
-		<title>Metronic | Admin Dashboard Template</title>
+		<title>Heart Beats | Dashboard login</title>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 		<meta content="" name="description"/>
@@ -55,19 +55,19 @@
 			<label class="control-label visible-ie8 visible-ie9">Gebruikersnaam</label>
 			<div class="input-icon">
 				<i class="fa fa-user"></i>
-				<input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Gebruikers" name="user"/>
+                                <input class="form-control placeholder-no-fix" type="text" <?php if(isset($this->system->request['loginremembered']['user'])){echo 'value="'.$this->system->request['loginremembered']['user'].'" ';}; ?>autocomplete="off" placeholder="Gebruikers" name="user"/>
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="control-label visible-ie8 visible-ie9">Wachtwoord</label>
 			<div class="input-icon">
 				<i class="fa fa-lock"></i>
-				<input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="Wachtwoord" name="password"/>
+				<input class="form-control placeholder-no-fix" type="password" <?php if(isset($this->system->request['loginremembered']['password'])){echo 'value="'.$this->system->request['loginremembered']['password'].'" ';}; ?>autocomplete="off" placeholder="Wachtwoord" name="password"/>
 			</div>
 		</div>
 		<div class="form-actions">
 			<label class="checkbox">
-			<input type="checkbox" name="remember" value="1"/> Onthoud mij </label>
+			<input type="checkbox" name="remember" <?php if(isset($this->system->request['loginremembered']['remember'])){echo 'checked="checked" ';}; ?>value="1"/> Onthoud mij </label>
 			<button type="submit" class="btn green pull-right">
 			Login <i class="m-icon-swapright m-icon-white"></i>
 			</button>
