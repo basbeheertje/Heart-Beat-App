@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 3.3.2deb1ubuntu1
+-- version 3.2.0.1
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 27, 2014 at 07:38 PM
--- Server version: 5.1.63
--- PHP Version: 5.3.2-1ubuntu4.21
+-- Generation Time: Jan 27, 2014 at 11:25 
+-- Server version: 5.1.37
+-- PHP Version: 5.3.0
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `alert` (
   `type` int(11) NOT NULL,
   `state` tinyint(4) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `alert`
@@ -39,15 +39,16 @@ CREATE TABLE IF NOT EXISTS `alert` (
 
 INSERT INTO `alert` (`id`, `device`, `type`, `state`) VALUES
 (1, 1, 1, 1),
-(2, 1, 2, 1);
+(2, 1, 2, 1),
+(3, 1, 1, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `alertReceivers`
+-- Table structure for table `alertreceivers`
 --
 
-CREATE TABLE IF NOT EXISTS `alertReceivers` (
+CREATE TABLE IF NOT EXISTS `alertreceivers` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `value` text NOT NULL,
   `alert` int(11) NOT NULL,
@@ -58,10 +59,10 @@ CREATE TABLE IF NOT EXISTS `alertReceivers` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
--- Dumping data for table `alertReceivers`
+-- Dumping data for table `alertreceivers`
 --
 
-INSERT INTO `alertReceivers` (`id`, `value`, `alert`, `state`, `creator`, `create_date`) VALUES
+INSERT INTO `alertreceivers` (`id`, `value`, `alert`, `state`, `creator`, `create_date`) VALUES
 (1, '0', 1, 1, 1, '2014-01-21 14:43:49'),
 (2, '621828563', 2, 1, 1, '2014-01-21 14:43:49'),
 (3, 'basvanbeers@hotmail.com', 1, 1, 1, '2014-01-21 14:44:24'),
@@ -70,10 +71,10 @@ INSERT INTO `alertReceivers` (`id`, `value`, `alert`, `state`, `creator`, `creat
 -- --------------------------------------------------------
 
 --
--- Table structure for table `alertTypes`
+-- Table structure for table `alerttypes`
 --
 
-CREATE TABLE IF NOT EXISTS `alertTypes` (
+CREATE TABLE IF NOT EXISTS `alerttypes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` text NOT NULL,
   `state` tinyint(4) NOT NULL,
@@ -83,10 +84,10 @@ CREATE TABLE IF NOT EXISTS `alertTypes` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
--- Dumping data for table `alertTypes`
+-- Dumping data for table `alerttypes`
 --
 
-INSERT INTO `alertTypes` (`id`, `title`, `state`, `creator`, `create_date`) VALUES
+INSERT INTO `alerttypes` (`id`, `title`, `state`, `creator`, `create_date`) VALUES
 (1, 'Mail', 1, 1, '2014-01-21 14:43:06'),
 (2, 'SMS', 2, 1, '2014-01-21 14:43:06');
 
@@ -219,24 +220,46 @@ INSERT INTO `devicedata` (`id`, `date`, `time`, `state`, `value`, `creator`, `cr
 -- --------------------------------------------------------
 
 --
--- Table structure for table `deviceTypes`
+-- Table structure for table `devicetypes`
 --
 
-CREATE TABLE IF NOT EXISTS `deviceTypes` (
+CREATE TABLE IF NOT EXISTS `devicetypes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` text NOT NULL,
   `state` tinyint(4) NOT NULL,
   `creator` int(11) NOT NULL,
   `create_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
--- Dumping data for table `deviceTypes`
+-- Dumping data for table `devicetypes`
 --
 
-INSERT INTO `deviceTypes` (`id`, `title`, `state`, `creator`, `create_date`) VALUES
-(1, 'expansion', 1, 1, '2014-01-14 16:07:30');
+INSERT INTO `devicetypes` (`id`, `title`, `state`, `creator`, `create_date`) VALUES
+(1, 'expansion', 1, 1, '2014-01-14 16:07:30'),
+(2, 'Mobile', 1, 1, '2014-01-27 21:48:57');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `share`
+--
+
+CREATE TABLE IF NOT EXISTS `share` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user` int(11) NOT NULL,
+  `device` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `share`
+--
+
+INSERT INTO `share` (`id`, `user`, `device`) VALUES
+(3, 2, 1),
+(4, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -255,22 +278,23 @@ CREATE TABLE IF NOT EXISTS `user` (
   `create_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `authToken` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id`, `email`, `password`, `firstname`, `lastname`, `phonenumber`, `state`, `create_date`, `authToken`) VALUES
-(1, 'basvanbeers@hotmail.com', 'wachtwoord', 'Bas', 'van Beers', 621828563, 1, '2014-01-14 14:31:02', 'ooX5d#fCdpI)gk6e');
+(1, 'basvanbeers@hotmail.com', 'wachtwoord', 'Bas', 'van Beers', 621828563, 1, '2014-01-14 14:31:02', 'ooX5d#fCdpI)gk6e'),
+(2, 'dokter@schoolminor.nl', 'wachtwoord', 'Dokter', 'van der Ploeg', 621828563, 1, '2014-01-27 22:45:06', '');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `userAttributes`
+-- Table structure for table `userattributes`
 --
 
-CREATE TABLE IF NOT EXISTS `userAttributes` (
+CREATE TABLE IF NOT EXISTS `userattributes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `key` text NOT NULL,
   `value` text NOT NULL,
@@ -280,8 +304,12 @@ CREATE TABLE IF NOT EXISTS `userAttributes` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
--- Dumping data for table `userAttributes`
+-- Dumping data for table `userattributes`
 --
 
-INSERT INTO `userAttributes` (`id`, `key`, `value`, `user`, `create_date`) VALUES
+INSERT INTO `userattributes` (`id`, `key`, `value`, `user`, `create_date`) VALUES
 (1, 'woonplaats', 'rotterdam', 1, '2014-01-14 15:37:50');
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
