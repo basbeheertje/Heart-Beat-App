@@ -19,15 +19,7 @@
                             
                             $this->checkUser($this->system->request->data['user'], $this->system->request->data['password']);
                             
-                        }/*else if(isset($_GET) and !empty($_GET) and isset($_GET['user'])){
-				
-				$this->checkUser($_GET['user'], $_GET['password']);
-				
-			}else if(isset($_POST) and !empty($_POST) and isset($_POST['user'])){
-				
-				$this->checkUser($_POST['user'], $_POST['password']);
-				
-			}*/else if(isset($_SESSION) and isset($_SESSION['authToken']) and !empty($_SESSION['authToken'])){
+                        }else if(isset($_SESSION) and isset($_SESSION['authToken']) and !empty($_SESSION['authToken'])){
 				
 				$this->checkToken($_SESSION['authToken']);
 				
@@ -142,13 +134,15 @@
 		
                 public function checkRemember(){
                     
-                    if(isset($_COOKIE['remember'])){
+                    if(isset($_COOKIE['remember']) and !empty($_COOKIE['remember'])){
                         
                         $user = new user($this->system);
                         $respons = $user->getUserRembered($_COOKIE['remember']);
-                        $this->system->request['loginremembered']['user'] = $respons["email"];
-                        $this->system->request['loginremembered']['password'] = $respons["password"];
-                        $this->system->request['loginremembered']['remember'] = true;
+                        if(isset($respons) and !empty($respons)){
+                            $this->system->request->data['loginremembered']['user'] = $respons["email"];
+                            $this->system->request->data['loginremembered']['password'] = $respons["password"];
+                            $this->system->request->data['loginremembered']['remember'] = true;
+                        }
                         
                     }
                     

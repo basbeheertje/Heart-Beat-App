@@ -43,6 +43,7 @@
 <div class="content">
 	<!-- BEGIN LOGIN FORM -->
 	<form class="login-form" action="/" method="post">
+                <input type="hidden" name="formkey" value="logon"/>
 		<h3 class="form-title">Login om uw statistieken te bekijken</h3>
 		<div class="alert alert-danger display-hide">
 			<button class="close" data-close="alert"></button>
@@ -55,19 +56,19 @@
 			<label class="control-label visible-ie8 visible-ie9">Gebruikersnaam</label>
 			<div class="input-icon">
 				<i class="fa fa-user"></i>
-                                <input class="form-control placeholder-no-fix" type="text" <?php if(isset($this->system->request['loginremembered']['user'])){echo 'value="'.$this->system->request['loginremembered']['user'].'" ';}; ?>autocomplete="off" placeholder="Gebruikers" name="user"/>
+                                <input class="form-control placeholder-no-fix" type="text" <?php if(isset($this->system->request->data['loginremembered']['user'])){echo 'value="'.$this->system->request->data['loginremembered']['user'].'" ';}; ?>autocomplete="off" placeholder="Gebruikers" name="user"/>
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="control-label visible-ie8 visible-ie9">Wachtwoord</label>
 			<div class="input-icon">
 				<i class="fa fa-lock"></i>
-				<input class="form-control placeholder-no-fix" type="password" <?php if(isset($this->system->request['loginremembered']['password'])){echo 'value="'.$this->system->request['loginremembered']['password'].'" ';}; ?>autocomplete="off" placeholder="Wachtwoord" name="password"/>
+				<input class="form-control placeholder-no-fix" type="password" <?php if(isset($this->system->request->data['loginremembered']['password'])){echo 'value="'.$this->system->request->data['loginremembered']['password'].'" ';}; ?>autocomplete="off" placeholder="Wachtwoord" name="password"/>
 			</div>
 		</div>
 		<div class="form-actions">
 			<label class="checkbox">
-			<input type="checkbox" name="remember" <?php if(isset($this->system->request['loginremembered']['remember'])){echo 'checked="checked" ';}; ?>value="1"/> Onthoud mij </label>
+			<input type="checkbox" name="remember" <?php if(isset($this->system->request->data['loginremembered']['remember'])){echo 'checked="checked" ';}; ?>value="1"/> Onthoud mij </label>
 			<button type="submit" class="btn green pull-right">
 			Login <i class="m-icon-swapright m-icon-white"></i>
 			</button>
