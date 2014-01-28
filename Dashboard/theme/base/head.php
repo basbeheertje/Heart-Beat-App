@@ -34,5 +34,7 @@
 		<link href="/<?php echo $this->themeUrl(); ?>css/custom.css" rel="stylesheet" type="text/css"/>
 		<!-- END THEME STYLES -->
 		<link rel="shortcut icon" href="/<?php echo $this->themeUrl(); ?>/img/favicon.ico"/>
+        
+		<script src="/<?php echo $this->themeUrl(); ?>scripts/charts.js" type="text/javascript"></script>
 	</head>
 	<!-- END HEAD -->

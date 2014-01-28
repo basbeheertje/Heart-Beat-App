@@ -50,7 +50,7 @@
 		<script src="/<?php echo $this->themeUrl(); ?>scripts/app.js" type="text/javascript"></script>
 		<script src="/<?php echo $this->themeUrl(); ?>scripts/index.js" type="text/javascript"></script>
 		<script src="/<?php echo $this->themeUrl(); ?>scripts/tasks.js" type="text/javascript"></script>
-		<script src="/<?php echo $this->themeUrl(); ?>plugins/data-tables/jquery.dataTables.js" type="text/javascript"></script>
+        <script src="/<?php echo $this->themeUrl(); ?>plugins/data-tables/jquery.dataTables.js" type="text/javascript"></script>
 		<script src="/<?php echo $this->themeUrl(); ?>plugins/data-tables/DT_bootstrap.js" type="text/javascript"></script>
 		<!-- END PAGE LEVEL SCRIPTS -->
 		<script>
@@ -59,6 +59,7 @@
 			   Index.init();
 			    Index.initIntro();
 			   Tasks.initDashboardWidget();
+               initDashboard();
 			   // begin first table
 				$('.managedTables').dataTable({
 					"aoColumns": [
