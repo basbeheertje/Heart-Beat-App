@@ -1,0 +1,59 @@
+html,body,#main-screen{font-family:'Myriad Pro';display: inline-block;float: left;width: 100%;height: 100%;margin: 0px;}
+#main-screen{display:none;overflow:hidden;overflow-y: scroll;}
+html, body{overflow:hidden;}
+#splashscreen{position:absolute;width:100%;height:100%;background: rgb(67,67,75);background: -moz-linear-gradient(top,  rgba(67,67,75,1) 0%, rgba(42,47,53,1) 100%);background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(67,67,75,1)), color-stop(100%,rgba(42,47,53,1)));background: -webkit-linear-gradient(top,  rgba(67,67,75,1) 0%,rgba(42,47,53,1) 100%);background: -o-linear-gradient(top,  rgba(67,67,75,1) 0%,rgba(42,47,53,1) 100%);background: -ms-linear-gradient(top,  rgba(67,67,75,1) 0%,rgba(42,47,53,1) 100%);background: linear-gradient(to bottom,  rgba(67,67,75,1) 0%,rgba(42,47,53,1) 100%);filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#43434b', endColorstr='#2a2f35',GradientType=0 );}
+#go-back .fa.fa-arrow-left, #logo > div{vertical-align: middle;display: table-cell;color:white;height: 100%;}
+#go-back, #logo{display: table;color:white;margin-left: 20px;line-height: inherit;height: 100%;float: left;font-size: 20px;}
+.nieuws-item, .team-page-content, .news-page-content{width: 70%;margin-left: 10%;margin-right: 10%;-moz-box-shadow: 0 0 5px #ccc;-webkit-box-shadow: 0 0 5px #ccc;box-shadow: 0 0 5px #ccc;display: inline-block;float: left;margin-top: 5px;margin-bottom: 5px;padding: 5%;text-align: center;}
+#splashscreen-image{margin: 0 auto;display: block;width: 50%;height: 50%;text-align: center;top: 25%;background:url('../images/logo.png');background-size: contain;position: relative;background-repeat: no-repeat;background-position: center;}
+#splashscreen-image img{height: 100%;display:none;width: auto;}
+#loadingscreen{display: none;width: 100%;height: 100%;background-color: white;}
+#load-message,#load-type{float: center;text-align: center;}
+#load-type .fa.fa-repeat{font-size:12em;}
+#load-message{font-size:4em;}
+#main{transition: left 1s;-webkit-transition: left 1s;position: absolute;height: 90%;top: 10%;width:100%;}
+#main > div{display:inline-block;width:100%;}
+#menu > ul{display: inline-block;float: left;background-color: #424242;padding: 0px;list-style:none;margin: 0px;display:inline-block;float:left;width: 95%;height: 100%;padding-left:5%;}
+#menu > ul li{margin:2%;color:white;font-size:18px;line-height:40px;}
+#menu{position: fixed;left: -70%;width: 70%;height: 90%;top:10%;visibility:hidden;transition: left 1s;-webkit-transition: left 1s;}
+#header{height: 10%;z-index:333;width: 100%;background: rgb(67,67,75);background: -moz-linear-gradient(top,  rgba(67,67,75,1) 0%, rgba(42,47,53,1) 100%);background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(67,67,75,1)), color-stop(100%,rgba(42,47,53,1)));background: -webkit-linear-gradient(top,  rgba(67,67,75,1) 0%,rgba(42,47,53,1) 100%);background: -o-linear-gradient(top,  rgba(67,67,75,1) 0%,rgba(42,47,53,1) 100%);background: -ms-linear-gradient(top,  rgba(67,67,75,1) 0%,rgba(42,47,53,1) 100%);background: linear-gradient(to bottom,  rgba(67,67,75,1) 0%,rgba(42,47,53,1) 100%);filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#43434b', endColorstr='#2a2f35',GradientType=0 );position: fixed;}
+#main-screen{position: relative;left: 0px;top: 0px;}
+#go-back .fa.fa-arrow-left{color:white;}
+.teams-page,.news-page{display:none;}
+#about, .teams-item{width:70%;margin-left:10%;margin-right:10%;-moz-box-shadow: 0 0 5px #ccc;-webkit-box-shadow: 0 0 5px #ccc;box-shadow: 0 0 5px #ccc;padding:10px;}
+#teams{padding-top:5px;}
+#about{width:70%!important;}
+.blink_me {
+    -webkit-animation-name: blinker;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+
+    -moz-animation-name: blinker;
+    -moz-animation-duration: 1s;
+    -moz-animation-timing-function: linear;
+    -moz-animation-iteration-count: infinite;
+
+    animation-name: blinker;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+@-moz-keyframes blinker {  
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+}
+
+@-webkit-keyframes blinker {  
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+}
+
+@keyframes blinker {  
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+}

@@ -1,0 +1,57 @@
+<!--<html manifest="manifest.appcache">-->
+<html>
+	<head>
+		<title>
+			HeartBeats APP
+		</title>
+		<meta name="viewport" content="width=device-width, user-scalable=no">
+		<link rel="stylesheet" type="text/css" href="css/style.css" media="all" />
+		<link rel="stylesheet" type="text/css" href="css/myriadpro.css" media="all" />
+		<link rel="stylesheet" type="text/css" href="css/font-awesome.css" media="all" />
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/core.js"></script>
+		<!-- http://nadh.in/code/localstoragedb/  -->
+		<script type="text/javascript" src="js/localstoragedb.js"></script>
+		<script type="text/javascript" src="js/database.js"></script>
+        <script type="text/javascript" src="js/flot/jquery.flot.js"></script>
+        <script type="text/javascript" src="js/flot/jquery.flot.resize.js"></script>
+    </head>
+	<body>
+		<div id="loadingscreen"><div id="load-type"><i class="fa fa-repeat"></i></div><div id="load-message">Even geduld...</div></div>
+		<div id="splashscreen"><div id="splashscreen-image"><img src="/images/logo.png"></div></div>
+		<div id="main-screen">
+			<div id="header" onclick="toggleMenu();"><div id="go-back"><i class="fa fa-arrow-left"></i></div><div id="logo"><div>HeartBeats</div></div></div>
+			<div id="menu">
+				<ul>
+                    <li onclick="loadPage('actueel');">
+						<i class="fa fa-bell"></i> Actueel
+					</li>
+					<li onclick="loadPage('dashboard');">
+						<i class="fa fa-bell"></i> Dashboard
+					</li>
+					<li onclick="loadPage('alerts');">
+						<i class="fa fa-calendar"></i> Alerts
+					</li>
+					<li onclick="loadPage('about');">
+						<i class="fa fa-cog"></i> About
+					</li>
+				</ul>
+			</div>
+			<div id="main" onclick="closeMenu();">
+				<div id="actueel"></div>
+				<div id="dashboard"></div>
+				<div id="alerts"></div>
+                <div id="alert">
+                    <div class="alert-item" style="width:80%;height:100%;margin-left:10%;">
+                        <h1 class="blink_me" style="text-align:center;">ALERT</h1>
+                        <div style="border: 15px solid #BABABA;border-radius: 50%;overflow:hidden;width:100%;">
+                            <img src="images/gebruiker.jpg" width="100%"/>
+                        </div>
+                        <div class="blink_me"><p style="text-align:center">Ruben heeft een te lage hartslag</p></div>
+                    </div>
+                </div>
+				<div id="about"><h1>Heart Beats</h1><p>Deze APP is gemaakt door Heart Beats. Voor de minor sensor technology aan de Hogeschool Leiden.</p><h2>Projectleden</h2><p>Bas<br/>Frans<br/>Robbert<br/>Ron</p></div>
+			</div>
+		</div>
+	</body>
+</html>
