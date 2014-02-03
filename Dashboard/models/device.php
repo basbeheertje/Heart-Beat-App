@@ -32,7 +32,7 @@
 		
 		public function getType(){
 		
-			$query = 'SELECT `id` FROM `deviceTypes` WHERE id = '.$this->type.' LIMIT 1';
+			$query = 'SELECT `id` FROM `devicetypes` WHERE id = '.$this->type.' LIMIT 1';
 			$uitkomst = $this->select($query);
 			
 			$attributenLijst = '';

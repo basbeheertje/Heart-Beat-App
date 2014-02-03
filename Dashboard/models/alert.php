@@ -32,7 +32,7 @@
 		
 		public function getType(){
 		
-			$query = 'SELECT `id` FROM `alertTypes` WHERE id = '.$this->type.' LIMIT 1';
+			$query = 'SELECT `id` FROM `alerttypes` WHERE id = '.$this->type.' LIMIT 1';
 			$uitkomst = $this->select($query);
 			
 			$attributenLijst = '';
@@ -49,7 +49,7 @@
 	
 		public function getAlertreceivers(){
 		
-			$query = 'SELECT `id` FROM `alertReceivers` WHERE alert = '.$this->id.'';
+			$query = 'SELECT `id` FROM `alertreceivers` WHERE alert = '.$this->id.'';
 			$uitkomst = $this->select($query);
 			
 			$attributenLijst = array();
