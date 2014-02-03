@@ -37,7 +37,7 @@
 		public function add(){
 			
 			$columns = $this->getColumns();
-                        unset($columns[0]);
+            unset($columns[0]);
 			
 			$query = "INSERT INTO `".$this->table."` (".implode(',',$columns).") VALUES(";
 			
