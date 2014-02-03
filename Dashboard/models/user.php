@@ -23,7 +23,7 @@
 			parent::load($id);
 			$this->attributes = $this->getAttributes();
 			$this->devices = $this->getDevices();
-                        $this->shares = $this->getShares();
+            $this->shares = $this->getShares();
 		
 		}
 		

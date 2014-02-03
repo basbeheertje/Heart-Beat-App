@@ -5,7 +5,7 @@
 		public $controller;
 		public $theme = 'base';
 		public $models = array('model','share','device','deviceTypes','deviceData','alert','alertTypes','alertReceivers','user','userAttributes');
-		public $needs = array('controller','login','dashboard','settings','logout');
+		public $needs = array('controller','login','dashboard','settings','logout','generaterandom');
 		public $db_database = 'schoolminor';
 		public $db_username = 'schoolminor';
 		public $db_password = 'schoolminor';
