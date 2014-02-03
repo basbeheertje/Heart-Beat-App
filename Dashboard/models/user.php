@@ -29,7 +29,7 @@
 		
 		public function getAttributes(){
 		
-			$query = 'SELECT `id` FROM `userAttributes` WHERE user = '.$this->id.'';
+			$query = 'SELECT `id` FROM `userattributes` WHERE user = '.$this->id.'';
 			$uitkomst = $this->select($query);
 			
 			$attributenLijst = array();

@@ -2,7 +2,7 @@
 
 	class alertTypes extends model{
 	
-		public $table = 'alertTypes';
+		public $table = 'alerttypes';
 	
 	}
 	

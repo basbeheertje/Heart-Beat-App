@@ -2,7 +2,7 @@
 
 	class alertReceivers extends model{
 	
-		public $table = 'alertReceivers';
+		public $table = 'alertreceivers';
 	
 	}
 	
