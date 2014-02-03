@@ -56,13 +56,13 @@
         
     }
     
-    $counter = 30;
+    $counter = 0;
     
     foreach($values as $value){
         
         $counter++;
         
-        echo '['.$counter.', '.$value['value'].' + randValue()],';
+        echo '['.$counter.','.$value['value'].',\''.$value['time'].'\', ],'."\r\n";
         
     }
 

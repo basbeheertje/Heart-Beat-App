@@ -13,6 +13,19 @@
 			$this->renderView('alerts'.DIRECTORY_SEPARATOR.'default');
 			
 		}
+        
+        public function editprofile(){
+            
+            $this->system->user->email = $this->system->request->data['email'];
+            $this->system->user->firstname = $this->system->request->data['firstname'];
+            $this->system->user->lastname = $this->system->request->data['lastname'];
+            $this->system->user->state = $this->system->request->data['state'];
+            $this->system->user->save();
+            
+            Header( "HTTP/1.1 301 Moved Permanently" ); 
+            Header( "Location: /" );
+            
+        }
                 
                 public function alertAdd(){
                     

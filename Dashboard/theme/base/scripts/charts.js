@@ -15,7 +15,15 @@
             }
             
 function showTooltip(title, x, y, contents) {
-                $('<div id="tooltip" class="chart-tooltip"><div class="date">' + title + '<\/div><div class="label label-success">' + contents + '<\/div><div style="display:none;" class="label label-danger">Imp: ' + x * 12 + '<\/div><\/div>').css({
+                if(contents > 79 && contents < 101){
+                    
+                    var cls = 'label-success';
+                }else if(contents < 121 && contents > 60){
+                    var cls = 'label-warning';
+                }else{
+                    var cls = 'label-danger';
+                }
+                $('<div id="tooltip" class="chart-tooltip"><div class="date">' + title + '<\/div><div class="label '+cls+'">' + contents + '<\/div><div style="display:none;" class="label label-danger">Imp: ' + x * 12 + '<\/div><\/div>').css({
                     position: 'absolute',
                     display: 'none',
                     top: y - 100,
@@ -120,9 +128,9 @@ function showTooltip(title, x, y, contents) {
                             }else if(month == 11){
                                 month = 'Dec';
                             }
-                            //console.log(y);
+                            
                             var newdate = d.getDate() + ' ' + month + ' ' + d.getFullYear();
-                            showTooltip(newdate, item.pageX, item.pageY, y);
+                            showTooltip(hartslag[item.datapoint[0]][2], item.pageX, item.pageY, y);
                         }
                     } else {
                         $("#tooltip").remove();

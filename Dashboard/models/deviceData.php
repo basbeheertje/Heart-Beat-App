@@ -14,11 +14,31 @@
             
         }
         
-        public function getHourly($device_id, $hour){
+        public function getHourly($device_id, $hour, $date = null){
             
-            $query = "SELECT * FROM `".$this->table."` WHERE time > '".$hour.":00:00' AND time < '".$hour.":59:59' AND date = '".date('Y-m-d')."' AND device = ".$device_id;
+            if(!isset($date)){
+                $date = date('Y-m-d');
+            }
             
-            //echo $query;
+            $query = "SELECT * FROM `".$this->table."` WHERE time > '".$hour.":00:00' AND time < '".$hour.":59:59' AND date = '".$date."' AND device = ".$device_id;
+            
+            /*echo $query;
+            exit;*/
+            
+            return($this->select($query));
+            
+        }
+        
+        public function getDaily($device_id, $date){
+            
+            if(!isset($date)){
+                $date = date('Y-m-d');
+            }
+            
+            $query = "SELECT * FROM `".$this->table."` WHERE time > '".$hour.":00:00' AND time < '".$hour.":59:59' AND date = '".$date."' AND device = ".$device_id;
+            
+            /*echo $query;
+            exit;*/
             
             return($this->select($query));
             
